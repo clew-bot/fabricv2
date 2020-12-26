@@ -21,29 +21,39 @@ const palleteColors = [
   color: "#008000"
 },
   {
-  id: "red",
-  text: "Red",
-  color: "#FF0000"
+  id: "blue",
+  text: "Blue",
+  color: "#0000FF"
 },
   {
-  id: "red",
-  text: "Red",
-  color: "#FF0000"
+  id: "purple",
+  text: "Purple",
+  color: "#800080"
 },
   {
-  id: "red",
-  text: "Red",
-  color: "#FF0000"
+  id: "pink",
+  text: "Pink",
+  color:  "#FFC0CB"
 },
   {
-  id: "red",
-  text: "Red",
-  color: "#FF0000"
+  id: "orange",
+  text: "Orange",
+  color: "#FFA500"
 },
   {
-  id: "red",
-  text: "Red",
-  color: "#FF0000"
+  id: "yellow",
+  text: "Yellow",
+  color: "#FFFF00"
+},
+  {
+  id: "brown",
+  text: "Brown",
+  color: "#A52A2A"
+},
+{
+  id: "black",
+  text: "Black",
+  color: "#000000"
 },
 ]
 
