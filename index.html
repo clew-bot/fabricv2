@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabric JS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1 id="welcome">Welcome to the Playground!</h1>
+    <div class="enablingC">
+<button id="draw">Click to Enable Drawing</button><br><br>
+
+    <button id="textGenerate">Generate Text</button>
+<h4>Choose a Shape</h4>
+
+<select id="shapesId">
+    <option value="">Please select</option>
+    <option value="rectangle">Square</option>
+    <option value="triangle">Triangle</option>
+    <option value="circle">Circle</option>
+    <option value="trapezoid">Trapezoid</option>
+    <option value="ellipse">Ellipse</option>
+</select>
+<button id="realShapes" onclick="draw()">Go!</button>
+
+<h4>Choose a Sticker!</h4>
+<select id="characterId">
+    <option value="">Please Select</option>
+    <option value="blossom">Blossom</option>
+    <option value="booba">Booba</option>
+    <option value="bubbles">Bubbles</option>
+    <option value="buttercup">Buttercup</option>
+    <option value="clifford">Clifford</option>
+    <option value="goku">Goku</option>
+    <option value="ml">Miraculous Ladybug</option>
+    <option value="molang">Molang</option>
+    <option value="patrick">Patrick Star</option>
+    <option value="peppa">Peppa Pig</option>
+    <option value="scooby">Scooby Doo</option>
+    <option value="spiderman">Spiderman</option>
+    <option value="sponge">Spongebob SquarePants</option>
+    <option value="squidward">Squidward</option>
+    <option value="rekt">Wreck-it-Ralph</option>
+    
+</select>
+<button id="getCharacter" onclick="genChar()">Go!</button>
+<h4>Drawing Pallette</h4>
+<button id="red">Red</button>
+<button id="blue">Blue</button>
+<button id="green">Green</button><br>
+<button id="purple">Purple</button>
+<button id="pink">Pink</button><br>
+<button id="orange">Orange</button>
+<button id="yellow">Yellow</button><br>
+<button id="black">Black</button>
+<button id="brown">Brown</button><br>
+<button id="surpriseMF">SURPRISE ME!</button><br><br>
+<label for="drawingStroke"><h5>Drawing Width:</h5></label>
+<input type="range" value="0" min="0" max="150" id="drawingStroke">
+</div>
+<div id="cContainer">
+    <canvas id="canvas"></canvas>
+</div>
+<div class="genInput">
+    
+    <button id="removeEl">Remove</button>
+    <button id="removeAll">Clear All</button>
+    <button id="saveImg">Save Image (paint only)</button>
+</div>
+<div id="removeBtn">
+    
+</div>
+<div class="palleteContainer">
+  
+</div>
+<p>made with ❤️ by <a href="https://github.com/clew-bot" target="blank">clew-bot</a></p>
+    <script src="./lib/fabric.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
