@@ -9,6 +9,45 @@ const black = document.getElementById("black");
 const brown = document.getElementById("brown");
 const surprise = document.getElementById("surprise");
 
+const palleteColors = [
+  {
+  id: "red",
+  text: "Red",
+  color: "#FF0000"
+},
+  {
+  id: "green",
+  text: "Green",
+  color: "#008000"
+},
+  {
+  id: "red",
+  text: "Red",
+  color: "#FF0000"
+},
+  {
+  id: "red",
+  text: "Red",
+  color: "#FF0000"
+},
+  {
+  id: "red",
+  text: "Red",
+  color: "#FF0000"
+},
+  {
+  id: "red",
+  text: "Red",
+  color: "#FF0000"
+},
+  {
+  id: "red",
+  text: "Red",
+  color: "#FF0000"
+},
+]
+
+renderSideMenu();
 //function to enable drawing mode //
 const drawing = document.getElementById("draw");
 drawing.addEventListener("click", () => {  
@@ -18,63 +57,77 @@ drawing.addEventListener("click", () => {
 
 //init//
 const initCanvas = (id) => {
+  const width = window.innerWidth*.8;
     return new fabric.Canvas(id, {
-        width: 1000,
-        height: 700,
+        width,
+        height: width*.7,
         isDrawingMode: false        
     });
     
 }
 
-//Color buttons DRY AF//
-red.addEventListener("click", () => {
-    canvas.isDrawingMode = true
-    canvas.freeDrawingBrush.color = "#FF0000";
+$(document).on("click", ".palleteBtn", function(){
+  canvas.isDrawingMode = true
+    canvas.freeDrawingBrush.color = $(this).attr("data-color");
     canvas.renderAll();
-});
-blue.addEventListener("click", () => {
-  canvas.isDrawingMode = true
-  canvas.freeDrawingBrush.color = "#0000FF";
-  canvas.renderAll();
-});
-green.addEventListener("click", () => {
-  canvas.isDrawingMode = true
-  canvas.freeDrawingBrush.color = "#008000";
-  canvas.renderAll();
-});
-purple.addEventListener("click", () => {
-  canvas.isDrawingMode = true
-  canvas.freeDrawingBrush.color = "#800080";
-  canvas.renderAll();
-});
-pink.addEventListener("click", () => {
-  canvas.isDrawingMode = true
-  canvas.freeDrawingBrush.color = "#FFC0CB";
-  canvas.renderAll();
-});
-orange.addEventListener("click", () => {
-  canvas.isDrawingMode = true
-  canvas.freeDrawingBrush.color = "#FFA500";
-  canvas.renderAll();
-});
-yellow.addEventListener("click", () => {
-  canvas.isDrawingMode = true
-  canvas.freeDrawingBrush.color = "#FFFF00";
-  canvas.renderAll();
-});
-black.addEventListener("click", () => {
-  canvas.isDrawingMode = true
-  canvas.freeDrawingBrush.color = "#000000";
-  canvas.renderAll();
-});
-brown.addEventListener("click", () => {
-  canvas.isDrawingMode = true
-  canvas.freeDrawingBrush.color = "#A52A2A";
-  canvas.renderAll();
-});
+})
+
+//Color buttons DRY AF//
+// red.addEventListener("click", () => {
+//   canvas.isDrawingMode = true
+//     canvas.freeDrawingBrush.color = "#FF0000";
+//     canvas.renderAll();
+//   });
+//   blue.addEventListener("click", () => {
+//     canvas.isDrawingMode = true
+//     canvas.freeDrawingBrush.color = "#0000FF";
+//     canvas.renderAll();
+// });
+// green.addEventListener("click", () => {
+//   canvas.isDrawingMode = true
+//   canvas.freeDrawingBrush.color = "#008000";
+//   canvas.renderAll();
+// });
+// purple.addEventListener("click", () => {
+//   canvas.isDrawingMode = true
+//   canvas.freeDrawingBrush.color = "#800080";
+//   canvas.renderAll();
+// });
+// pink.addEventListener("click", () => {
+//   canvas.isDrawingMode = true
+//   canvas.freeDrawingBrush.color = "#FFC0CB";
+//   canvas.renderAll();
+// });
+// orange.addEventListener("click", () => {
+//   canvas.isDrawingMode = true
+//   canvas.freeDrawingBrush.color = "#FFA500";
+//   canvas.renderAll();
+// });
+// yellow.addEventListener("click", () => {
+//   canvas.isDrawingMode = true
+//   canvas.freeDrawingBrush.color = "#FFFF00";
+//   canvas.renderAll();
+// });
+// black.addEventListener("click", () => {
+//   canvas.isDrawingMode = true
+//   canvas.freeDrawingBrush.color = "#000000";
+//   canvas.renderAll();
+// });
+// brown.addEventListener("click", () => {
+//   canvas.isDrawingMode = true
+//   canvas.freeDrawingBrush.color = "#A52A2A";
+//   canvas.renderAll();
+// });
 
 const canvas = initCanvas("canvas");
 
+// window.addEventListener('resize', ()=> {
+//   // const width = window.innerWidth*.8;
+//   // canvas.width = width;
+//   // canvas.height = width*.7;
+//   // canvas.renderAll();
+//   canvas = initCanvas('canvas')
+// })
 //create rectangle //
 const rect = new fabric.Rect({
     left: 100,
@@ -83,12 +136,12 @@ const rect = new fabric.Rect({
     width: 20,
     height: 20,
     angle: 45
-});
-//create circle //
-const circle = new fabric.Circle({
+  });
+  //create circle //
+  const circle = new fabric.Circle({
     radius: 20, fill: 'blue', left: 100, top: 100
   });
-
+  
 // create triangle //
 const triangle = new fabric.Triangle({
     width: 20, height: 30, fill: 'green', left: 50, top: 50
@@ -109,16 +162,21 @@ rect.animate({'top': 250, "left": 300}, {
   });
 canvas.renderAll();
 
+function renderSideMenu(){
+  palleteColors.forEach(c => {
+    $("#palleteCont").append(`<button id=${c.id} class="palleteBtn" data-color=${c.color}>${c.text}</button>`);
+  })
+}
 //cartoons TODO: animate to buttons --> DONE DUDDITZ 12/22//
 
   //background image //
-  const imageUrl = "./images/background.png"
-  canvas.setBackgroundImage(imageUrl, canvas.renderAll.bind(canvas), {
-    // Optionally add an opacity lvl to the image //
-    backgroundImageOpacity: 0.5,
-    // should the image be resized to fit the container? //
-    backgroundImageStretch: true
-});
+//   const imageUrl = "./images/background.png"
+//   canvas.setBackgroundImage(imageUrl, canvas.renderAll.bind(canvas), {
+//     // Optionally add an opacity lvl to the image //
+//     backgroundImageOpacity: 0.5,
+//     // should the image be resized to fit the container? //
+//     backgroundImageStretch: true
+// });
 
 var comicSansText = new fabric.Text("I'm in Comic Sans", {
   fontFamily: 'Comic Sans'
