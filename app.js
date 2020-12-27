@@ -62,7 +62,7 @@ renderSideMenu();
 const drawing = document.getElementById("draw");
 drawing.addEventListener("click", () => {  
     canvas.isDrawingMode = !canvas.isDrawingMode;
-    canvas.isDrawingMode ? drawing.innerHTML = 'Cancel Drawing' : drawing.innerHTML = 'Enter drawing mode';        
+    canvas.isDrawingMode ? drawing.innerHTML = 'Drawing off' : drawing.innerHTML = 'Drawing On';        
 });
 
 //init//
