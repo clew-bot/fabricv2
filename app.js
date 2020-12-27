@@ -31,9 +31,9 @@ const palleteColors = [
   color: "#800080"
 },
   {
-  id: "pink",
-  text: "Pink",
-  color:  "#FFC0CB"
+  id: "brown",
+  text: "Brown",
+  color:  "#805217"
 },
   {
   id: "orange",
@@ -46,9 +46,9 @@ const palleteColors = [
   color: "#FFFF00"
 },
   {
-  id: "brown",
-  text: "Brown",
-  color: "#A52A2A"
+  id: "pink",
+  text: "Pink",
+  color: "#FFC0CB" 
 },
 {
   id: "black",
@@ -172,6 +172,8 @@ rect.animate({'top': 250, "left": 300}, {
   });
 canvas.renderAll();
 
+
+//side button render //
 function renderSideMenu(){
   palleteColors.forEach(c => {
     $("#palleteCont").append(`<button id=${c.id} class="palleteBtn" data-color=${c.color}>${c.text}</button>`);
