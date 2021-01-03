@@ -5,19 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fabric JS</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div id="resizer">
     <h1 id="welcome">Welcome to the Playground!</h1>
-    <div class="main" style="display: inline-flex;width:100%">
+    <div class="main" style="display: inline-flex;width:100%;">
       <div id="cContainer" style=" display: inline">
         <canvas id="canvas"></canvas>
       </div>
       <div class="enablingC" style="display: inline">
         <button id="draw">Enable Drawing</button><br /><br />
-        <button id="textGenerate">Generate Text</button>
-        <h4>Choose a Shape</h4>
+        <button id="textGenerate">Generate Text</button><br>
 
+        
+       
+        <button onclick="undo()">Undo</button>
+        <button onclick="redo()">Redo</button>
+        <h4>Choose a Shape</h4>
         <select id="shapesId">
           <option value="">Please select</option>
           <option value="rectangle">Square</option>
@@ -79,7 +85,9 @@
       made with ❤️ by
       <a href="https://github.com/clew-bot" target="blank">clew-bot</a>
     </p>
+  </div>
     <script src="./lib/fabric.min.js"></script>
+    <script src="./undoredo.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

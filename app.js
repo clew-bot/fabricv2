@@ -83,18 +83,62 @@ $(document).on("click", ".palleteBtn", function(){
 
 const canvas = initCanvas("canvas");
 
+const randomLeft = Math.floor(Math.random() * 300)
+console.log(randomLeft);
 //create rectangle //
+
+
 const rect = new fabric.Rect({
-    left: 100,
-    top: 100,
+    left: 400,
     fill: "aquablue",
-    width: 20,
-    height: 20,
+    width: 34,
+    height: 60,
     angle: 45
+  });
+  rect.set({ strokeWidth: 3, 
+    stroke: "hotpink" });
+    rect.set("angle", 15).set("flipY", true);
+
+  rect.animate({"top": 250}, {
+    onChange: canvas.renderAll.bind(canvas),
+    duration: 1000,
+    easing: fabric.util.ease.easeOutBounce
+  });
+const rect1 = new fabric.Rect({
+    left: 700,
+    fill: "blue",
+    width: 80,
+    height: 90,
+    angle: 65
+  });
+  rect1.set("angle", 15).set("flipY", true);
+  rect1.animate({"top": 250}, {
+    onChange: canvas.renderAll.bind(canvas),
+    duration: 900,
+    easing: fabric.util.ease.easeOutBounce
+  });
+const rect2 = new fabric.Rect({
+    left: randomLeft,
+    fill: "green",
+    width: 30,
+    height: 90,
+    angle: 35
+  });
+  rect2.set("angle", 0).set("flipY", true);
+  rect2.animate({"top": 250}, {
+    onChange: canvas.renderAll.bind(canvas),
+    duration: 1000,
+    easing: fabric.util.ease.easeOutBounce
   });
 //create circle //
 const circle = new fabric.Circle({
-    radius: 20, fill: "blue", left: 100, top: 100
+    radius: 20, fill: "blue", left: 1500, top: 100
+  });
+  circle.set("angle", 15).set("flipY", true);
+  circle.animate({"top": 250}, {
+    onChange: canvas.renderAll.bind(canvas),
+    duration: 1100,
+    easing: fabric.util.ease.easeOutBounce
   });
   
 // create triangle //
@@ -102,19 +146,12 @@ const triangle = new fabric.Triangle({
     width: 20, height: 30, fill: "green", left: 50, top: 50
   });
 //adding shapes ---- TODO integrate in button ---> DONE DUDDITZ 12/22 //
-canvas.add(rect, circle, triangle);
+canvas.add(rect, rect1, rect2, circle, triangle);
 
 //custom properties for rectangle //
 //stoke width and color
-rect.set({ strokeWidth: 5, 
-           stroke: "hotpink" });
-rect.set("angle", 15).set("flipY", true);
-// rect.set("selectable", false);
-rect.animate({"top": 250, "left": 300}, {
-    onChange: canvas.renderAll.bind(canvas),
-    duration: 1000,
-    easing: fabric.util.ease.easeOutBounce
-  });
+
+
 canvas.renderAll();
 
 //side button render //
@@ -133,14 +170,15 @@ const genText = document.getElementById("textGenerate");
 //adding text function //
 genText.addEventListener("click", () => {
   const textBox = new fabric.Textbox("Lorum ipsum dolor sit amet", {
-    left: 50,
-    top: 10,
-    width: 150,
-    fontSize: 32,
+    left: 100,
+    top: 300,
+    width: 300,
+    fontSize: 54,
+    fontFamily: "Comic Sans"
   });
-  textBox.animate("left", 250, {
+  textBox.animate("left", 850, {
     onChange: canvas.renderAll.bind(canvas),
-    duration: 1000,
+    duration: 1300,
     easing: fabric.util.ease.easeOutBounce
   });
   canvas.add(textBox).setActiveObject(textBox);
@@ -471,6 +509,40 @@ drawWidth.addEventListener("change", () => {
     canvas.freeDrawingBrush.width = parseInt(drawWidth.value, 10) || 1;
   }
 });
+
+const undo = () => {
+  canvas.undo();
+}
+const redo = () => {
+  canvas.redo();
+}
+
+
+
+
+// const baw = document.getElementById("baw");
+// baw.addEventListener("change", (oof) => {
+//   canvas.getActiveObject();
+//   console.log(oof);
+//   var filter = new fabric.Image.filters.Sepia();
+//   oof.filters.push(filter);
+//   oof.applyFilters(canvas.renderAll.bind(canvas));
+ 
+  
+// })
+
+
+// const genFilter = () => {
+// const filters = document.getElementById("filterId").options[document.getElementById("filterId").selectedIndex].value
+// const obj = canvas.getActiveObject()
+//   if(filters === "baw") {
+//     console.log("test");
+    
+//     obj.img.filters.push(new fabric.Image.filters.Grayscale());
+//     canvas.renderAll();
+//   }
+// }
+
 
 //save image as PNG --needs work--//
 const saveImage = document.getElementById("saveImg");
